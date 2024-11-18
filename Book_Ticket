@@ -1,0 +1,31 @@
+# Function to display available tickets and handle booking
+def book_tickets():
+    # Set a limit for available tickets
+    total_tickets = 50
+    
+    print("Welcome to the Ticket Booking System")
+    print(f"Total available tickets: {total_tickets}")
+
+    while True:
+        # Get user input for number of tickets they want to book
+        try:
+            tickets_to_book = int(input("Enter the number of tickets you want to book: "))
+            if tickets_to_book <= 0:
+                print("Please enter a positive number of tickets.")
+            elif tickets_to_book > total_tickets:
+                print(f"Sorry, we only have {total_tickets} tickets left.")
+            else:
+                total_tickets -= tickets_to_book
+                print(f"Booking successful! {tickets_to_book} ticket(s) booked.")
+                print(f"Tickets remaining: {total_tickets}")
+                
+                # Ask if they want to book more tickets
+                more_tickets = input("Do you want to book more tickets? (yes/no): ").lower()
+                if more_tickets != 'yes':
+                    print("Thank you for using the Ticket Booking System!")
+                    break
+        except ValueError:
+            print("Please enter a valid number.")
+
+# Call the ticket booking function
+book_tickets()
